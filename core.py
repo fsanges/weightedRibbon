@@ -28,7 +28,7 @@ import string
 import maya.OpenMaya as om
 
 
-import cuRig.common.xTools.controlCurveShapes as ccs
+import controlCurveShapes as ccs
 reload(ccs)
 
 
