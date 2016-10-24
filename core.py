@@ -1,10 +1,6 @@
 '''###############################################################################################################################
-Author: Felipe Sanges
-Copyright 2013
-
+Author: Felipe Sanges - 2013
 This script is a work in progress. There's a lot of improvements to be made and I apologize for the dirty code :/
-
-
 ToDo:
         -Turn off bends - (Done)
         -Turn off deformation surface - (Done)
@@ -13,12 +9,9 @@ ToDo:
         -Define return values
         -Adjust prefix - (Done)
         -A hole bunch of stuff
-
 DEPENDENCIES:
-
-        -props_createCurveMesh.py
-        -props_colorCCC.py
-
+        -controlCurveShapes.py
+        -Props_colorCCC.py
 mc.warning(createRibbon.__doc__)
 '''
 
@@ -27,7 +20,7 @@ import maya.mel as mel
 import string
 import maya.OpenMaya as om
 
-
+# Import shape module
 import controlCurveShapes as ccs
 reload(ccs)
 
@@ -52,18 +45,12 @@ def createRibbon(
     ):
 
     '''-
-
     Description:
         Creates a layered controlled ribbon.
-
-
         Dependencies:
-
         Example:
             test = createRibbon()[4]
-
             createRibbon(autoCtrlCurves=False, drivenSurface=False, name='ohYeah')
-
             createRibbon
                 (
                 scale=0.10,                 # = Controls scale
@@ -79,11 +66,6 @@ def createRibbon(
                 lyrDensityV=[1, 1, 1, 1, 1] # = Number of control per layer in V
                 )
     '''
-
-
-
-
-
 
 
     surfLyr = ['A', 'B', 'C', 'D', 'E', 'F']
@@ -636,12 +618,9 @@ def addFolliclesToAll(prefix, driven, numLayers, surfLyr, layerGeos, connectionL
 def parentShapeRibbon(inShapeObj, inTarget, maintainPos=False):
     '''
     Description:
-
         Panrent shape nodes to target objects.
-
         Dependencies:
             NONE
-
     '''
     mc.parent(inShapeObj, inTarget)
     mc.makeIdentity(inShapeObj, apply=maintainPos, t=True, r=True, s=True)
@@ -673,12 +652,9 @@ def delShapes(inTransform):
 def parentShape(inShapeObj, inTarget, maintainPos=False):
     '''
     Description:
-
         Panrent shape nodes to target objects.
-
         Dependencies:
             NONE
-
     '''
     mc.parent(inShapeObj, inTarget)
     mc.makeIdentity(inShapeObj, apply=maintainPos, t=True, r=True, s=True)
@@ -716,14 +692,11 @@ def addCtrlShapesToRibbon(
                           ):
     '''
     Description:
-
-        This is made to be use with the module fs_sahara_ribbon. It will add curve shapes to ribbon
+        This is made to be use with the module fs_ribbon. It will add curve shapes to ribbon
         control joints.
-
         Dependencies:
             -parentShape()
-            -sahara_createCtrlShapes as ccCreate
-
+            -createCtrlShapes as ccCreate
         Example:
             Run createRibbon() then get the list of controls and run addCtrlShapesToRibbon:
                 sl = fsRbn.createRibbon()[5]
@@ -759,14 +732,11 @@ def addCtrlShapesToRibbonII(
                           ):
     '''
     Description:
-
-        This is made to be use with the module fs_sahara_ribbon. It will add curve shapes to ribbon
+        This is made to be use with the module fs_ribbon. It will add curve shapes to ribbon
         control joints.
-
         Dependencies:
             -parentShape()
-            -sahara_createCtrlShapes as ccCreate
-
+            -createCtrlShapes as ccCreate
         Example:
             Run createRibbon() then get the list of controls and run addCtrlShapesToRibbon:
                 sl = fsRbn.createRibbon()[5]
@@ -804,14 +774,11 @@ def addCtrlShapesToRibbonIII(
                           ):
     '''
     Description:
-
-        This is made to be use with the module fs_sahara_ribbon. It will add curve shapes to ribbon
+        This is made to be use with the module fs_ribbon. It will add curve shapes to ribbon
         control joints.
-
         Dependencies:
             -parentShape()
-            -sahara_createCtrlShapes as ccCreate
-
+            -createCtrlShapes as ccCreate
         Example:
             Run createRibbon() then get the list of controls and run addCtrlShapesToRibbon:
                 sl = fsRbn.createRibbon()[5]
@@ -839,10 +806,6 @@ def addCtrlShapesToRibbonIII(
 
                 delShapes(j)
                 parentShape(shpCtrl, j)
-
-
-
-
 
 
 
@@ -884,4 +847,3 @@ def reShapeRibbon(inShaperSurf, prefix='rbn'):
                               scale=[(sA, sA, sA), (sB, sB, sB), (sC, sC, sC), (0.3, 0.3, 0.3)],
                               color=[13, 17, 25, 26, 13]
                               )
-
