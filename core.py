@@ -2,17 +2,13 @@
 Author: Felipe Sanges - 2013
 This script is a work in progress. There's a lot of improvements to be made and I apologize for the dirty code :/
 ToDo:
-        -Turn off bends - (Done)
-        -Turn off deformation surface - (Done)
-        -Add groups to "doNotTouch_grp" - (Done)
+        -Recreate UI with QT
         -Fix locked attrs
         -Define return values
         -Adjust prefix - (Done)
         -A hole bunch of stuff
 DEPENDENCIES:
         -controlCurveShapes.py
-        -Props_colorCCC.py
-mc.warning(createRibbon.__doc__)
 '''
 
 import maya.cmds as mc
@@ -48,7 +44,7 @@ def createRibbon(
     Description:
         Creates a layered controlled ribbon.
         Dependencies:
-        Example:
+        Usage Example:
             test = createRibbon()[4]
             createRibbon(autoCtrlCurves=False, drivenSurface=False, name='ohYeah')
             createRibbon
